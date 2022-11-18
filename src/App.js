@@ -3,6 +3,8 @@ import React from 'react'
 
 const Ejercicio = () => {
     function rifar() {
+
+      //LO QUE RECIBE EN LA CAJA DE TEXTO LO VA A OBTENER Y SE DECLARA UNA VARIABLE DE TIPO ARREGLO DONDE SE VAN A GUARDAR LOS DATOS
         document.getElementById('t').innerHTML=''
         document.getElementById('multiplicar').innerHTML = ''
         document.getElementById('r').innerHTML=''
@@ -21,14 +23,20 @@ const Ejercicio = () => {
             const n = parseFloat(document.getElementById('Numero' + i).value)
             numeros.push(n)
         }
+        //MUESTRA LA TABLA DE MULTIPLICAR
         document.getElementById('t').innerHTML = 'Tabla de Multiplicar'
         tabla(numeros.at(0))
+        //MUESTRA LA TABLA DE OPERACIONES BASICAS
         document.getElementById('r').innerHTML = 'Operaciones Básicas'
         operaciones(numeros.at(1), numeros.at(2))
+        //MUESTRA EL RESULTADO DEL FACTORIAL
         document.getElementById('f').innerHTML = 'Factorial'
         document.getElementById('factorial').innerHTML = numeros.at(3) + '!=' + factorial(numeros.at(3))
     }
 
+    //SE HACE UNA FUNCION PARA HACER LAS OPERACIONES DE LA TABLA DE MULTIOLICAR
+   //GENERA NUMEROS DEL 1 AL 11 Y LOS AGREGA EN LA TABLA HACIENDOLE UN PARCEO PARA QUE SEAN NUMEROS
+   //ENTONCES; N ES UN NUMERO A INGRESAR Y LO VAMOS A MULTIPLICAR DEL 1 AL 10 COMO ESTA DICHO EN EL ARREGLO
     function tabla(n) {
         var cadena = ''
         for (var i = 1; i < 11; i++) {
@@ -40,9 +48,12 @@ const Ejercicio = () => {
                 + '<td>' + (parseInt(n * i)) + '</td>'
                 + '</tr>'
         }
+        //IMPRIMIR EL RESULTADO
         document.getElementById('multiplicar').innerHTML = cadena
     }
 
+
+    //SE DECLARO OTRA FUNCION PARA HACER OPERACIONES BASICAS
     function operaciones(x, y) {
         var cadena = ''
         var ops = {
@@ -59,6 +70,8 @@ const Ejercicio = () => {
                 return parseFloat(x) / parseFloat(y)
             }
         }
+
+        //LA CADENA SE ASIGA EL + EL VALOR DE Y APLICA LA OPERACION A REALIZAR
         cadena += x + '+' + y + '=' + ops.suma(x, y) + '</br>'
         cadena += x + '-' + y + '=' + ops.resta(x, y) + '</span></br>'
         cadena += x + 'x' + y + '=' + ops.multiplicacion(x, y) + '</span></br>'
